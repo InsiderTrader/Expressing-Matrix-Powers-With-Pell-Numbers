@@ -1,38 +1,3 @@
-# ===============================
-# ENHANCED MATRIX WORD GENERATOR WITH POPUP SUPPORT AND FOCUSED COMPARISONS
-# ===============================
-"""
-This enhanced program explores different ways to write a matrix as a product of simpler matrices.
-It uses methods based on:
-- Fibonacci numbers: Uses non-consecutive Fibonacci numbers to build matrix words
-- Pell numbers: Uses Pell numbers (allowing repetition) to build matrix words  
-- Binary decomposition: Uses powers of 2 to build matrix words
-
-KEY CONCEPTS:
-- Matrix: A rectangular array of numbers that can represent mathematical transformations
-- Elementary Matrix: A simple matrix that differs from the identity matrix by one entry
-- Word: A sequence of matrix operations written as text (like "e_{13} T^2")
-- Cayley Hash: A hash function based on the final matrix result
-
-MATHEMATICAL BACKGROUND:
-- Fibonacci Numbers: 1, 1, 2, 3, 5, 8, 13, 21, ... (each is sum of previous two)
-- Pell Numbers: 1, 2, 5, 12, 29, 70, ... (follow formula P_n = 2*P_{n-1} + P_{n-2})
-- Binary Powers: 1, 2, 4, 8, 16, 32, ... (powers of 2)
-
-GOAL: Given a target number m, find a "word" (sequence of matrix operations) 
-      that produces the matrix e_{13}^m (identity matrix with m in position (1,3))
-
-ENHANCEMENTS:
-- Professional emoji-enhanced interface for better UX
-- Popup windows for detailed computation steps (improves readability)
-- Support for very large numbers (2^128+)
-- High-quality graphs suitable for research presentations with logarithmic scaling
-- Enhanced error handling and validation
-- Focused comparison feature to demonstrate method strengths
-- Fixed visualization for extremely large numbers
-"""
-# ===============================
-
 import numpy as np
 import time
 try:
@@ -782,8 +747,7 @@ def create_focused_comparison_bar_chart(test_data, results):
                    color='#2E86AB', alpha=0.8, edgecolor='white', linewidth=1)
     bars2 = ax.bar(x, pell_steps, width, label='Pell Method', 
                    color='#A23B72', alpha=0.8, edgecolor='white', linewidth=1)
-    bars3 = ax.bar(x + width, bin_steps, width, label='Binary Method', 
-                   color='#F18F01', alpha=0.8, edgecolor='white', linewidth=1)
+    
     
     # Add value labels on bars if not too crowded
     if len(values) <= 12:
@@ -798,7 +762,7 @@ def create_focused_comparison_bar_chart(test_data, results):
         
         add_labels(bars1, fib_steps)
         add_labels(bars2, pell_steps)
-        add_labels(bars3, bin_steps)
+        
     
     # Formatting
     ax.set_xlabel('Test Input', fontsize=12, fontweight='bold')
@@ -956,8 +920,7 @@ def create_enhanced_comparison_graph(ms, results_data, chart_type="bar"):
                            color=colors['Fibonacci'], alpha=0.8, edgecolor='white', linewidth=0.7)
             bars2 = ax1.bar(x, pell_steps, width, label='Pell', 
                            color=colors['Pell'], alpha=0.8, edgecolor='white', linewidth=0.7)
-            bars3 = ax1.bar(x + width, bin_steps, width, label='Binary', 
-                           color=colors['Binary'], alpha=0.8, edgecolor='white', linewidth=0.7)
+            
             
             ax1.set_xticks(x)
             if len(ms) <= 15:
@@ -973,9 +936,7 @@ def create_enhanced_comparison_graph(ms, results_data, chart_type="bar"):
             ax1.plot(ms, pell_steps, label='Pell', marker='s', linewidth=3, 
                     markersize=8, color=colors['Pell'], markerfacecolor='white', 
                     markeredgewidth=2, markeredgecolor=colors['Pell'])
-            ax1.plot(ms, bin_steps, label='Binary', marker='^', linewidth=3, 
-                    markersize=8, color=colors['Binary'], markerfacecolor='white', 
-                    markeredgewidth=2, markeredgecolor=colors['Binary'])
+            
         
         ax1.set_title('Linear Scale View', fontsize=14, fontweight='bold')
         ax1.set_ylabel('Word Length (Steps)', fontsize=12, fontweight='bold')
@@ -990,8 +951,7 @@ def create_enhanced_comparison_graph(ms, results_data, chart_type="bar"):
                                color=colors['Fibonacci'], alpha=0.8, edgecolor='white', linewidth=0.7)
             bars2_log = ax2.bar(x, pell_steps_nonzero, width, label='Pell', 
                                color=colors['Pell'], alpha=0.8, edgecolor='white', linewidth=0.7)
-            bars3_log = ax2.bar(x + width, bin_steps_nonzero, width, label='Binary', 
-                               color=colors['Binary'], alpha=0.8, edgecolor='white', linewidth=0.7)
+            
             
             ax2.set_xticks(x)
             if len(ms) <= 15:
@@ -1007,10 +967,7 @@ def create_enhanced_comparison_graph(ms, results_data, chart_type="bar"):
             ax2.plot(ms, pell_steps_nonzero, label='Pell', marker='s', linewidth=3, 
                     markersize=8, color=colors['Pell'], markerfacecolor='white', 
                     markeredgewidth=2, markeredgecolor=colors['Pell'])
-            ax2.plot(ms, bin_steps_nonzero, label='Binary', marker='^', linewidth=3, 
-                    markersize=8, color=colors['Binary'], markerfacecolor='white', 
-                    markeredgewidth=2, markeredgecolor=colors['Binary'])
-        
+            
         ax2.set_yscale('log')
         ax2.set_title('Logarithmic Scale View (Better for Large Ranges)', fontsize=14, fontweight='bold')
         ax2.set_ylabel('Word Length (Steps) - Log Scale', fontsize=12, fontweight='bold')
@@ -1035,8 +992,7 @@ def create_enhanced_comparison_graph(ms, results_data, chart_type="bar"):
                           color=colors['Fibonacci'], alpha=0.8, edgecolor='white', linewidth=0.7)
             bars2 = ax.bar(x, pell_steps, width, label='Pell Method', 
                           color=colors['Pell'], alpha=0.8, edgecolor='white', linewidth=0.7)
-            bars3 = ax.bar(x + width, bin_steps, width, label='Binary Method', 
-                          color=colors['Binary'], alpha=0.8, edgecolor='white', linewidth=0.7)
+            
             
             # Add value labels on bars for small datasets
             if len(ms) <= 10:
@@ -1060,9 +1016,7 @@ def create_enhanced_comparison_graph(ms, results_data, chart_type="bar"):
             ax.plot(ms, pell_steps, label='Pell', marker='s', linewidth=3, 
                    markersize=8, color=colors['Pell'], markerfacecolor='white', 
                    markeredgewidth=2, markeredgecolor=colors['Pell'])
-            ax.plot(ms, bin_steps, label='Binary', marker='^', linewidth=3, 
-                   markersize=8, color=colors['Binary'], markerfacecolor='white', 
-                   markeredgewidth=2, markeredgecolor=colors['Binary'])
+            
         
         # Enhanced professional styling
         ax.set_xlabel('Target Exponent (m)', fontsize=14, fontweight='bold')
@@ -1188,8 +1142,7 @@ def create_log_scale_graph(ms, results_data, chart_type, colors):
                color=colors['Fibonacci'], alpha=0.8, edgecolor='white', linewidth=0.7)
         ax.bar(x, pell_steps, width, label='Pell Method', 
                color=colors['Pell'], alpha=0.8, edgecolor='white', linewidth=0.7)
-        ax.bar(x + width, bin_steps, width, label='Binary Method', 
-               color=colors['Binary'], alpha=0.8, edgecolor='white', linewidth=0.7)
+        
         
         ax.set_xticks(x)
         if len(ms) <= 15:
@@ -1205,9 +1158,7 @@ def create_log_scale_graph(ms, results_data, chart_type, colors):
         ax.plot(ms, pell_steps, label='Pell', marker='s', linewidth=3, 
                markersize=8, color=colors['Pell'], markerfacecolor='white', 
                markeredgewidth=2, markeredgecolor=colors['Pell'])
-        ax.plot(ms, bin_steps, label='Binary', marker='^', linewidth=3, 
-               markersize=8, color=colors['Binary'], markerfacecolor='white', 
-               markeredgewidth=2, markeredgecolor=colors['Binary'])
+       
     
     ax.set_yscale('log')
     ax.set_xlabel('Target Exponent (m)', fontsize=14, fontweight='bold')
@@ -1249,8 +1200,7 @@ def create_dual_scale_graph(ms, results_data, chart_type, colors):
                    color=colors['Fibonacci'], alpha=0.8, edgecolor='white', linewidth=0.7)
             ax.bar(x, steps_pell, width, label='Pell Method', 
                    color=colors['Pell'], alpha=0.8, edgecolor='white', linewidth=0.7)
-            ax.bar(x + width, steps_bin, width, label='Binary Method', 
-                   color=colors['Binary'], alpha=0.8, edgecolor='white', linewidth=0.7)
+            
             
             ax.set_xticks(x)
             if len(ms) <= 15:
@@ -1266,9 +1216,7 @@ def create_dual_scale_graph(ms, results_data, chart_type, colors):
             ax.plot(ms, steps_pell, label='Pell', marker='s', linewidth=3, 
                    markersize=8, color=colors['Pell'], markerfacecolor='white', 
                    markeredgewidth=2, markeredgecolor=colors['Pell'])
-            ax.plot(ms, steps_bin, label='Binary', marker='^', linewidth=3, 
-                   markersize=8, color=colors['Binary'], markerfacecolor='white', 
-                   markeredgewidth=2, markeredgecolor=colors['Binary'])
+            
         
         if log_scale:
             ax.set_yscale('log')
@@ -1280,14 +1228,14 @@ def create_dual_scale_graph(ms, results_data, chart_type, colors):
         return ax
     
     # Top plot: Linear scale
-    plot_data(ax1, fib_steps, pell_steps, bin_steps, log_scale=False)
+    
     ax1.set_title('Linear Scale View', fontsize=14, fontweight='bold')
     ax1.set_ylabel('Word Length (Steps)', fontsize=12, fontweight='bold')
     ax1.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'{int(x):,}'))
     ax1.legend(fontsize=10)
     
     # Bottom plot: Logarithmic scale
-    plot_data(ax2, fib_steps_nonzero, pell_steps_nonzero, bin_steps_nonzero, log_scale=True)
+   
     ax2.set_title('Logarithmic Scale View (Publication Quality)', fontsize=14, fontweight='bold')
     ax2.set_ylabel('Word Length (Steps) - Log Scale', fontsize=12, fontweight='bold')
     ax2.set_xlabel('Target Exponent (m)', fontsize=12, fontweight='bold')
@@ -1333,8 +1281,7 @@ def create_ratio_comparison_graph(ms, results_data, chart_type, colors):
                color=colors['Fibonacci'], alpha=0.8, edgecolor='white', linewidth=0.7)
         ax.bar(x, pell_ratios, width, label='Pell Method', 
                color=colors['Pell'], alpha=0.8, edgecolor='white', linewidth=0.7)
-        ax.bar(x + width, bin_ratios, width, label='Binary Method', 
-               color=colors['Binary'], alpha=0.8, edgecolor='white', linewidth=0.7)
+        
         
         ax.set_xticks(x)
         if len(ms) <= 15:
@@ -1350,9 +1297,7 @@ def create_ratio_comparison_graph(ms, results_data, chart_type, colors):
         ax.plot(ms, pell_ratios, label='Pell', marker='s', linewidth=3, 
                markersize=8, color=colors['Pell'], markerfacecolor='white', 
                markeredgewidth=2, markeredgecolor=colors['Pell'])
-        ax.plot(ms, bin_ratios, label='Binary', marker='^', linewidth=3, 
-               markersize=8, color=colors['Binary'], markerfacecolor='white', 
-               markeredgewidth=2, markeredgecolor=colors['Binary'])
+        
     
     # Add horizontal line at y=1 (optimal performance)
     ax.axhline(y=1, color='red', linestyle='--', alpha=0.7, linewidth=2, label='Optimal (1.0x)')
@@ -1411,8 +1356,7 @@ def create_dual_scale_graph(ms, results_data, chart_type, colors):
                    color=colors['Fibonacci'], alpha=0.8, edgecolor='white', linewidth=0.7)
             ax.bar(x, steps_pell, width, label='Pell Method', 
                    color=colors['Pell'], alpha=0.8, edgecolor='white', linewidth=0.7)
-            ax.bar(x + width, steps_bin, width, label='Binary Method', 
-                   color=colors['Binary'], alpha=0.8, edgecolor='white', linewidth=0.7)
+            
             
             ax.set_xticks(x)
             if len(ms) <= 15:
@@ -1428,9 +1372,7 @@ def create_dual_scale_graph(ms, results_data, chart_type, colors):
             ax.plot(ms, steps_pell, label='Pell', marker='s', linewidth=3, 
                    markersize=6, color=colors['Pell'], markerfacecolor='white', 
                    markeredgewidth=2, markeredgecolor=colors['Pell'])
-            ax.plot(ms, steps_bin, label='Binary', marker='^', linewidth=3, 
-                   markersize=6, color=colors['Binary'], markerfacecolor='white', 
-                   markeredgewidth=2, markeredgecolor=colors['Binary'])
+            
         
         if use_log:
             ax.set_yscale('log')
@@ -1442,13 +1384,13 @@ def create_dual_scale_graph(ms, results_data, chart_type, colors):
         ax.legend(fontsize=10)
     
     # Top plot: Linear scale
-    plot_on_axis(ax1, fib_steps, pell_steps, bin_steps, use_log=False)
+    
     ax1.set_title('Linear Scale View', fontsize=14, fontweight='bold')
     ax1.set_ylabel('Word Length (Steps)', fontsize=12, fontweight='bold')
     ax1.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'{int(x):,}'))
     
     # Bottom plot: Logarithmic scale
-    plot_on_axis(ax2, fib_steps_nonzero, pell_steps_nonzero, bin_steps_nonzero, use_log=True)
+  
     ax2.set_title('Logarithmic Scale View (Publication Quality)', fontsize=14, fontweight='bold')
     ax2.set_ylabel('Word Length (Steps) - Log Scale', fontsize=12, fontweight='bold')
     ax2.set_xlabel('Target Exponent (m)', fontsize=12, fontweight='bold')
@@ -1788,6 +1730,40 @@ def handle_focused_comparisons():
                 else:
                     print("❌ matplotlib not available - skipping chart generation")
                 
+            except ValueError:
+                print("❌ Invalid input. Please enter integers.")
+        elif choice == "2":
+           
+            # Fibonacci numbers
+            print("\n🎯 FIBONACCI NUMBER TEST")
+            print("=" * 50)
+            print("This tests actual Fibonacci numbers as inputs.")
+            print("The Fibonacci method should perform best on these inputs.")
+            print("Why? Because it uses Zeckendorf decomposition - perfect for Fibonacci inputs.")
+
+            try:
+                start_idx = int(input("\nEnter starting Fibonacci index (e.g., 10): "))
+                end_idx = int(input("Enter ending Fibonacci index (e.g., 20): "))
+
+                if start_idx < 2 or end_idx < start_idx:
+                    print("❌ Invalid range. Please use indices ≥ 2 with start ≤ end.")
+                    continue
+
+                print(f"\n🔍 Generating Fibonacci inputs from F_{start_idx} to F_{end_idx}...")
+                test_data = generate_fibonacci_inputs(start_idx, end_idx)
+
+                print(f"📊 Test values: {len(test_data['values'])} inputs")
+                for i, desc in enumerate(test_data['descriptions']):
+                    print(f"  {i+1}. {desc}")
+
+                print(f"\n🚀 Running comparison test...")
+                results = run_focused_comparison_test(test_data)
+
+                if HAS_MPL:
+                    create_focused_comparison_bar_chart(test_data, results)
+                else:
+                    print("❌ matplotlib not available - skipping chart generation")
+
             except ValueError:
                 print("❌ Invalid input. Please enter integers.")
         
